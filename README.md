@@ -26,7 +26,7 @@ This web application provides a RESTful API and interface for classifying both t
 
 These models are implemented using BERT and its lightweight version, Tiny BERT. Tiny BERT is optimized to maintain high accuracy while minimizing resource consumption. The models are trained using HuggingFace tools and are stored on Amazon S3. The server downloads the models from S3 and serves them to users via the FastAPI framework.
 
-## Multi-Task REATful API Structure
+## Multi-Task RESTful API Structure
 
 This web application integrates multiple models into a single API, allowing users to perform various classification tasks through a single interface. For example, users can send a request to specific endpoints to perform sentiment classification, disaster tweet classification, or human pose classification.
 
