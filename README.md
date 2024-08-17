@@ -10,6 +10,7 @@ This web application provides an API and interface for classifying both text and
 3. [Architecture](#architecture)
 4. [Data Validation and API Testing](#data-validation-and-api-testing)
 5. [Deployment](#deployment)
+6. [Tools Used](#tools-used)
 
 ## Models Used and Purpose
 
@@ -46,4 +47,16 @@ This web application integrates multiple models into a single API, allowing user
 ## Deployment
 
 - **Deployment on AWS EC2**: The models and API are deployed on an AWS EC2 server, making them accessible in a production environment. This allows users to access the API over the internet and utilize the models for various tasks.
+
+## Tools Used
+
+- **FastAPI**: A modern, fast (high-performance) web framework for building APIs with Python 3.8+.
+- **Uvicorn**: A lightning-fast ASGI server for serving FastAPI applications.
+- **Streamlit**: A framework for creating interactive web applications with Python.
+- **HuggingFace Transformers**: A library for state-of-the-art NLP models like BERT and Tiny BERT.
+- **Pydantic**: Data validation and settings management using Python type annotations.
+- **POSTMAN**: A popular tool for testing APIs.
+- **AWS S3**: Amazon's cloud storage service for storing and retrieving models.
+- **AWS EC2**: Amazon's cloud computing service for deploying the application.
+- **Docker** (optional): Containerization tool for packaging applications and dependencies.
 
