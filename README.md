@@ -3,6 +3,7 @@
 This web application provides a RESTful API and interface for classifying both text and image data using multiple machine learning models. The application is designed to efficiently manage and serve different classification tasks through a unified API.
 
 ![Architecture](image/webapp.png)
+![Streamlit](image/streamlit_app.png)
 
 ## Table of Contents
 1. [Models Used and Purpose](#models-used-and-purpose)
