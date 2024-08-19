@@ -16,7 +16,6 @@ This web application provides a RESTful API and interface for classifying both t
 ## Models Used and Purpose
 
 ### Sentiment Classification Model
-- **Dataset**: IMDb movie reviews
 - **Purpose**: Classify movie reviews as positive or negative.
 
 ### Disaster Tweet Classification Model
