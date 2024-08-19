@@ -1,61 +1,64 @@
-# Multi-Task Classification API
+# マルチタスク分類API
 
-This web application provides a RESTful API and interface for classifying both text and image data using multiple machine learning models. The application is designed to efficiently manage and serve different classification tasks through a unified API.
+このウェブアプリケーションは、テキストデータと画像データの分類を行うためのRESTful APIとインターフェースを提供します。アプリケーションは、複数の分類タスクを統合的に管理し、効率的に提供することを目的としています。
 
 ![Architecture](image/webapp.png)
 ![Streamlit](image/streamlit_app.png)
 
-## Table of Contents
-1. [Models Used and Purpose](#models-used-and-purpose)
-2. [Multi-Task API Structure](#multi-task-api-structure)
-3. [Architecture](#architecture)
-4. [Data Validation and API Testing](#data-validation-and-api-testing)
-5. [Deployment](#deployment)
-6. [Tools Used](#tools-used)
+## 目次
+1. [使用するモデルとその目的](#使用するモデルとその目的)
+2. [マルチタスクAPIの構造](#マルチタスクAPIの構造)
+3. [アーキテクチャ](#アーキテクチャ)
+4. [データ検証とAPIテスト](#データ検証とAPIテスト)
+5. [デプロイメント](#デプロイメント)
+6. [使用ツール](#使用ツール)
 
-## Models Used and Purpose
+## 使用するモデルとその目的
 
-### Sentiment Classification Model
-- **Purpose**: Classify movie reviews as positive or negative.
+### センチメント分類モデル
+- **目的**: 映画レビューをポジティブまたはネガティブに分類する。
 
-### Disaster Tweet Classification Model
-- **Purpose**: Determine whether a tweet is related to a disaster.
+### 災害ツイート分類モデル
+- **目的**: ツイートが災害に関連しているかどうかを判断する。
 
-### Human Pose Classification Model
-- **Purpose**: Classify human actions (e.g., standing, sitting) from image data.
+### 人間のポーズ分類モデル
+- **目的**: 画像データから人間の行動（例：立っている、座っているなど）を分類する。
 
-These models are implemented using BERT and its lightweight version, Tiny BERT. Tiny BERT is optimized to maintain high accuracy while minimizing resource consumption. The models are trained using HuggingFace tools and are stored on Amazon S3. The server downloads the models from S3 and serves them to users via the FastAPI framework.
+これらのモデルはBERTとその軽量版であるTiny BERTを使用して実装されています。Tiny BERTはリソース消費を最小限に抑えつつ高精度を維持するように最適化されています。モデルはHuggingFaceツールを使用してトレーニングされ、Amazon S3に保存されています。サーバーはS3からモデルをダウンロードし、FastAPIフレームワークを通じてユーザーに提供します。
 
-## Multi-Task RESTful API Structure
+## マルチタスクAPIの構造
 
-This web application integrates multiple models into a single API, allowing users to perform various classification tasks through a single interface. For example, users can send a request to specific endpoints to perform sentiment classification, disaster tweet classification, or human pose classification.
+このウェブアプリケーションは、複数のモデルを単一のAPIに統合し、ユーザーが単一のインターフェースを通じて様々な分類タスクを実行できるようにしています。たとえば、ユーザーは特定のエンドポイントにリクエストを送信して、センチメント分類、災害ツイート分類、人間のポーズ分類を行うことができます。
 
-## Architecture
+## アーキテクチャ
 
-- **FastAPI and Uvicorn Server**: The application is built using the FastAPI framework, which is a fast and lightweight web framework for Python. FastAPI is paired with the Uvicorn server to provide a high-performance API.
-  
-- **ML Model Integration**: When FastAPI receives a request, it passes the input data to the appropriate machine learning model to generate classification results. The response is then returned to the user, tailored to the specific task.
+- **FastAPIとUvicornサーバー**: アプリケーションはFastAPIフレームワークを使用して構築されており、これは高速で軽量なPython用のウェブフレームワークです。FastAPIはUvicornサーバーと組み合わせて使用され、高性能なAPIを提供します。
 
-- **User Interface**: A simple web interface is created using Streamlit, allowing users to easily interact with the API. Users can perform sentiment classification, disaster tweet classification, and human pose classification with ease.
+- **MLモデル統合**: FastAPIがリクエストを受け取ると、適切な機械学習モデルに入力データを渡して分類結果を生成します。結果はユーザーに返され、特定のタスクに合わせて調整されます。
 
-## Data Validation and API Testing
+- **ユーザーインターフェース**: Streamlitを使用して簡単なウェブインターフェースを作成し、ユーザーがAPIと簡単に対話できるようにしています。ユーザーはセンチメント分類、災害ツイート分類、人間のポーズ分類を簡単に実行できます。
 
-- **Data Validation with Pydantic**: FastAPI utilizes Pydantic to define data models and validate the integrity of the data sent to the API. This ensures that only accurate data enters the system.
-  
-- **API Testing**: Tools like POSTMAN are used to test the API to ensure that it operates as expected.
+## データ検証とAPIテスト
 
-## Deployment
+- **Pydanticによるデータ検証**: FastAPIはPydanticを使用してデータモデルを定義し、APIに送信されるデータの整合性を検証します。これにより、正確なデータのみがシステムに入ることが保証されます。
 
-- **Deployment on AWS EC2**: The models and API are deployed on an AWS EC2 server, making them accessible in a production environment. This allows users to access the API over the internet and utilize the models for various tasks.
+- **APIテスト**: POSTMANなどのツールを使用してAPIをテストし、期待通りに動作することを確認します。
 
-## Tools Used
+## デプロイメント
 
-- **FastAPI**: A modern, fast (high-performance) web framework for building APIs with Python 3.8+.
-- **Uvicorn**: A lightning-fast ASGI server for serving FastAPI applications.
-- **Streamlit**: A framework for creating interactive web applications with Python.
-- **HuggingFace Transformers**: A library for state-of-the-art NLP models like BERT and Tiny BERT.
-- **Pydantic**: Data validation and settings management using Python type annotations.
-- **POSTMAN**: A popular tool for testing APIs.
+- **AWS EC2へのデプロイメント**: モデルとAPIはAWS EC2サーバーにデプロイされ、これにより本番環境でアクセスできるようになります。これにより、インターネット経由でAPIにアクセスし、様々なタスクにモデルを活用することができます。
+
+## 使用ツール
+
+- **FastAPI**: Python 3.8+でAPIを構築するための現代的で高速なウェブフレームワーク。
+- **Uvicorn**: FastAPIアプリケーションを提供するための超高速ASGIサーバー。
+- **Streamlit**: Pythonでインタラクティブなウェブアプリケーションを作成するためのフレームワーク。
+- **HuggingFace Transformers**: BERTやTiny BERTなどの最先端NLPモデルのためのライブラリ。
+- **Pydantic**: Pythonの型アノテーションを使用したデータ検証と設定管理。
+- **POSTMAN**: APIのテストに人気のあるツール。
+- **AWS S3**: モデルを保存および取得するためのAmazonのクラウドストレージサービス。
+- **AWS EC2**: アプリケーションをデプロイするためのAmazonのクラウドコンピューティングサービス。
+- **Docker** (オプション): アプリケーションと依存関係をパッケージ化するためのコンテナ化ツール。
 - **AWS S3**: Amazon's cloud storage service for storing and retrieving models.
 - **AWS EC2**: Amazon's cloud computing service for deploying the application.
 - **Docker** (optional): Containerization tool for packaging applications and dependencies.
